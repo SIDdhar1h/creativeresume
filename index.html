@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siddharth's Professional Menu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Open+Sans:wght@400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #dc143c;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .menu-board {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #000;
+            border-radius: 15px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            overflow: hidden;
+            border: 8px solid #ffcc00;
+        }
+
+        .menu-header {
+            background: linear-gradient(180deg, #dc143c 0%, #b91c1c 100%);
+            color: #ffcc00;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            border-bottom: 4px solid #ffcc00;
+        }
+
+        .mcdonalds-logo {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.5rem;
+            color: #ffcc00;
+            text-shadow: 3px 3px 0px #000;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .employee-name {
+            background: #ffcc00;
+            color: #000;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            padding: 12px 25px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .employee-id {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .contact-strip {
+            background: #ffcc00;
+            color: #000;
+            padding: 15px;
+            text-align: center;
+            font-weight: 700;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            border-bottom: 3px solid #dc143c;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .menu-content {
+            background: #000;
+            color: #fff;
+            padding: 30px;
+        }
+
+        .menu-category {
+            margin-bottom: 40px;
+            border: 3px solid #ffcc00;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .category-header {
+            background: linear-gradient(90deg, #dc143c 0%, #ffcc00 100%);
+            color: #000;
+            padding: 20px;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.8rem;
+            text-align: center;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .menu-items {
+            background: #000;
+            padding: 25px;
+        }
+
+        .menu-item {
+            background: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            border-color: #ffcc00;
+            background: #222;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .item-name {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ffcc00;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .item-price {
+            background: #dc143c;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 1rem;
+            white-space: nowrap;
+            text-transform: uppercase;
+        }
+
+        .item-description {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .item-details {
+            color: #888;
+            font-size: 0.85rem;
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .value-meal-badge {
+            position: absolute;
+            top: -8px;
+            right: 15px;
+            background: #ff6b35;
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            transform: rotate(-5deg);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+        }
+
+        .new-badge {
+            background: #28a745;
+        }
+
+        .hot-badge {
+            background: #ff4444;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: rotate(-5deg) scale(1); }
+            50% { transform: rotate(-5deg) scale(1.05); }
+        }
+
+        .skills-combo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .combo-box {
+            background: #1a1a1a;
+            border: 2px solid #ffcc00;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .combo-title {
+            font-family: 'Fredoka One', cursive;
+            color: #ffcc00;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .combo-items {
+            color: #ccc;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .combo-price {
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: #dc143c;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .drive-thru-footer {
+            background: linear-gradient(90deg, #ffcc00 0%, #dc143c 100%);
+            color: #000;
+            text-align: center;
+            padding: 25px;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.3rem;
+            border-top: 4px solid #000;
+        }
+
+        .hours-badge {
+            background: #000;
+            color: #ffcc00;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: inline-block;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
+        }
+
+        .limited-time {
+            color: #ff4444;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-strip {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .employee-name {
+                font-size: 1.4rem;
+            }
+            
+            .mcdonalds-logo {
+                font-size: 2rem;
+            }
+
+            .item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .item-name {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-board">
+        <div class="menu-header">
+            <div class="mcdonalds-logo">McDONALD'S</div>
+            <div class="employee-name">SIDDHARTH PATRA</div>
+            <div class="employee-id">Employee ID: MECH-ENG-2023</div>
+        </div>
+
+        <div class="contact-strip">
+            <div class="contact-item">📞 CALL: +91 9449007416</div>
+            <div class="contact-item">📧 EMAIL: 190030039@iitdh.ac.in</div>
+            <div class="contact-item">💼 LINKEDIN: /siddharthpatra</div>
+        </div>
+
+        <div class="menu-content">
+            <div class="menu-category">
+                <div class="category-header">🎓 EDUCATION VALUE MEALS</div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="value-meal-badge new-badge">PREMIUM</div>
+                        <div class="item-header">
+                            <div class="item-name">MECHANICAL ENGINEERING DELUXE</div>
+                            <div class="item-price">GPA: 8.42★</div>
+                        </div>
+                        <div class="item-description">
+                            Fresh Bachelor of Technology in Mechanical Engineering from Indian Institute of Technology, Dharwad. 
+                            Served with a side of engineering excellence, technical expertise, and problem-solving skills. 
+                            Includes premium knowledge in mechanical systems and analytical thinking.
+                        </div>
+                        <div class="item-details">Prep Time: July 2019 – April 2023 | Fresh Daily</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <div class="category-header">🛠️ SKILLS COMBO MEALS</div>
+                <div class="menu-items">
+                    <div class="skills-combo">
+                        <div class="combo-box">
+                            <div class="combo-price">HOT</div>
+                            <div class="combo-title">PROGRAMMING COMBO</div>
+                            <div class="combo-items">
+                                Excel VBA • G-Sheets Apps Script • SQL • Python (Jupyter & VS Code) • Zapier
+                            </div>
+                        </div>
+                        <div class="combo-box">
+                            <div class="combo-price">NEW</div>
+                            <div class="combo-title">REPORTING HAPPY MEAL</div>
+                            <div class="combo-items">
+                                Looker Studio • Excel • Jira • PowerPoint • Figma
+                            </div>
+                        </div>
+                        <div class="combo-box">
+                            <div class="combo-price">★★★</div>
+                            <div class="combo-title">SPECIALTY SKILLS</div>
+                            <div class="combo-items">
+                                Data Analysis • Project Management • Product Management
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <div class="category-header">💼 PROFESSIONAL EXPERIENCE</div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="value-meal-badge hot-badge">BESTSELLER</div>
+                        <div class="item-header">
+                            <div class="item-name">FOUNDER'S OFFICE BIG MAC</div>
+                            <div class="item-price">$500K+ REVENUE</div>
+                        </div>
+                        <div class="item-description">
+                            <strong>ANAKIN (Y-COMBINATOR S21) - ANALYTICS & NEW BUSINESS</strong><br>
+                            Our signature experience! Two all-beef patties of analytics expertise, special sauce of business development, 
+                            lettuce-fresh client collaboration (15+ clients), pickles of data insights, onions of AI integration, 
+                            all on a sesame seed bun of leadership. Served with 3x efficiency increase and team management of 3 employees. 
+                            Includes Python data scraping, automated processes, and real-time dashboard management.
+                        </div>
+                        <div class="item-details">Serving Since: April 2022 – Present | Location: Bangalore Drive-Thru</div>
+                        <div class="limited-time">⚡ Still Hot & Fresh Daily!</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="value-meal-badge">STARTUP</div>
+                        <div class="item-header">
+                            <div class="item-name">CO-FOUNDER QUARTER POUNDER</div>
+                            <div class="item-price">900+ USERS</div>
+                        </div>
+                        <div class="item-description">
+                            <strong>UNBOOK - CO-FOUNDER & PRODUCT MANAGER</strong><br>
+                            A quarter pound of entrepreneurial spirit with cheese! Community-focused 2nd-hand books marketplace 
+                            with organic growth seasoning. Comes with app design, user acquisition strategies, and startup scaling experience. 
+                            Perfect for those hungry for innovation and community building.
+                        </div>
+                        <div class="item-details">Limited Time: July 2021 – March 2022 | Dharwad Location</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="drive-thru-footer">
+            🚗 "I'M LOVIN' IT!" - DRIVE-THRU PROFESSIONAL EXCELLENCE 🚗
+            <div class="hours-badge">Available 24/7 for Opportunities</div>
+        </div>
+    </div>
+</body>
+</html>
